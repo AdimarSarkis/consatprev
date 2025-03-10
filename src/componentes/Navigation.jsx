@@ -1,14 +1,14 @@
-
 'use client'
 import { useState } from "react";
 import Image from "next/image";
 import balanca from "../../public/balanca-de-justica.png";
+import Link from "next/link";
 
 const initialNavigation = [
-    { name: 'Inicio', href: '#', current: true },
-    { name: 'Sobre Nós', href: '#sobrenos', current: false },
-    { name: 'Serviços', href: '#servicos', current: false },
-    { name: 'Contato', href: '#contato', current: false },
+    { name: 'Inicio', href: '/', current: true },
+    { name: 'Sobre Nós', href: '/about', current: false },
+    { name: 'Serviços', href: '/servicos', current: false },
+    { name: 'Contato', href: '/contato', current: false },
 ];
 
 function classNames(...classes) {
@@ -24,11 +24,12 @@ const Navigation = () => {
       ...item,
       current: item.name === name
     })));
+    
   };
 
   return (
-    <div as="nav" className="bg-gray-800">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div as="nav" className="bg-gray-800 ">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 ">
         <div className="relative flex h-16 items-center justify-between">
           <div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
             {/* Mobile menu button */}
@@ -56,7 +57,7 @@ const Navigation = () => {
             <div className="hidden sm:ml-6 sm:block">
               <div className="flex space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
                     href={item.href}
                     aria-current={item.current ? 'page' : undefined}
@@ -67,7 +68,7 @@ const Navigation = () => {
                     onClick={() => handleItemClick(item.name)}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
@@ -91,7 +92,7 @@ const Navigation = () => {
         <div className="sm:hidden">
           <div className="space-y-1 px-2 pt-2 pb-3">
             {navigation.map((item) => (
-              <a
+              <Link
                 key={item.name}
                 href={item.href}
                 aria-current={item.current ? 'page' : undefined}
@@ -102,7 +103,7 @@ const Navigation = () => {
                 onClick={() => handleItemClick(item.name)}
               >
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
         </div>
